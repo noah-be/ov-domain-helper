@@ -53,11 +53,10 @@ node tests/submission.test.js
 
 ## Roadmap
 
-- Import/Export von Konfigurationen
-- eigene und gemeinschaftliche Presets
-- Wasser- und Terrain-Unterstützung
-- Spawn-Ausrichtung und Begrenzungen
-- persistenter Verlauf statt einfachem Rückgängig
+Die priorisierte, vorläufige Versionsplanung steht in der
+[`ROADMAP.md`](ROADMAP.md). Als nächste Schwerpunkte sind Praxistests, ein echter
+Startbereich, Import/Export mit Snapshots sowie eine automatische
+Abschlussprüfung vorgesehen.
 
 ## Lizenz
 
