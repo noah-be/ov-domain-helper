@@ -5,20 +5,41 @@
 (function () {
   "use strict";
   var state = {};
-  var fields = ["name","skyboxURL","skyColor","ambientURL","ambientIntensity","sunColor","sunIntensity","sunAzimuth","sunElevation","castShadows","hazeEnabled","hazeRange","hazeColor","groundEnabled","groundShape","groundColor","groundMaterialURL","groundCollisionless","lightEnabled","lightColor","lightIntensity","lightFalloffRadius","spawnMarker"];
+  var fields = ["name","skyboxURL","skyboxPreset","skyColor","ambientURL","ambientIntensity","sunColor","sunIntensity","sunAzimuth","sunElevation","castShadows","hazeEnabled","hazeRange","hazeColor","groundEnabled","groundShape","groundColor","groundMaterialURL","groundMaterialPreset","groundMaterialScale","groundCollisionless","lightEnabled","lightColor","lightIntensity","lightFalloffRadius","spawnMarker"];
   var vectors = { center:["centerX","centerY","centerZ"], size:["sizeX","sizeY","sizeZ"], groundSize:["groundSizeX","groundSizeY","groundSizeZ"] };
   var presets = {
-    daylight:{ label:"Tageslicht", note:"Heller, neutraler Start", skyColor:"#8fb9df", ambientIntensity:0.55, sunColor:"#fff4df", sunIntensity:1, sunAzimuth:135, sunElevation:45, hazeEnabled:false, groundColor:"#6f8d58" },
-    sunset:{ label:"Sonnenuntergang", note:"Warm und atmosphärisch", skyColor:"#d77b62", ambientIntensity:0.35, sunColor:"#ffb066", sunIntensity:1.3, sunAzimuth:255, sunElevation:10, hazeEnabled:true, hazeRange:850, hazeColor:"#d59c86", groundColor:"#665b50" },
-    night:{ label:"Nacht", note:"Kühl mit wenig Licht", skyColor:"#07142d", ambientIntensity:0.12, sunColor:"#9fbaff", sunIntensity:0.18, sunAzimuth:210, sunElevation:55, hazeEnabled:false, groundColor:"#26352f", lightEnabled:true, lightColor:"#b9d5ff", lightIntensity:2 },
-    studio:{ label:"Studio", note:"Neutral für Entwicklung", skyColor:"#454c54", ambientIntensity:0.8, sunColor:"#ffffff", sunIntensity:0.8, sunAzimuth:135, sunElevation:55, groundColor:"#777b80", lightEnabled:true, lightIntensity:1.5, lightFalloffRadius:30 }
+    daylight:{ label:"Tageslicht", note:"Heller, neutraler Start", skyboxPreset:"autumn_field_puresky", groundMaterialPreset:"leafy_grass", skyColor:"#8fb9df", ambientIntensity:0.55, sunColor:"#fff4df", sunIntensity:1, sunAzimuth:135, sunElevation:45, hazeEnabled:false, groundColor:"#ffffff" },
+    sunset:{ label:"Sonnenuntergang", note:"Warm und atmosphärisch", skyboxPreset:"belfast_sunset_puresky", groundMaterialPreset:"dirt_floor", skyColor:"#d77b62", ambientIntensity:0.35, sunColor:"#ffb066", sunIntensity:1.3, sunAzimuth:255, sunElevation:10, hazeEnabled:true, hazeRange:850, hazeColor:"#d59c86", groundColor:"#ffffff" },
+    night:{ label:"Nacht", note:"Kühl mit wenig Licht", skyboxPreset:"qwantani_night_puresky", groundMaterialPreset:"cobblestone_05", skyColor:"#07142d", ambientIntensity:0.12, sunColor:"#9fbaff", sunIntensity:0.18, sunAzimuth:210, sunElevation:55, hazeEnabled:false, groundColor:"#ffffff", lightEnabled:true, lightColor:"#b9d5ff", lightIntensity:2 },
+    studio:{ label:"Studio", note:"Neutral für Entwicklung", skyboxPreset:"", groundMaterialPreset:"concrete_floor_01", skyColor:"#454c54", ambientIntensity:0.8, sunColor:"#ffffff", sunIntensity:0.8, sunAzimuth:135, sunElevation:55, groundColor:"#ffffff", lightEnabled:true, lightIntensity:1.5, lightFalloffRadius:30 }
   };
+  var skyboxes = [
+    ["","Farbe",""],
+    ["autumn_field_puresky","Klarer Tag","autumn_field_puresky.jpg"],
+    ["aristea_wreck_puresky","Wolken","aristea_wreck_puresky.jpg"],
+    ["kloofendal_overcast_puresky","Bedeckt","kloofendal_overcast_puresky.jpg"],
+    ["kloofendal_misty_morning_puresky","Nebelmorgen","kloofendal_misty_morning_puresky.jpg"],
+    ["qwantani_sunrise_puresky","Sonnenaufgang","qwantani_sunrise_puresky.jpg"],
+    ["belfast_sunset_puresky","Sonnenuntergang","belfast_sunset_puresky.jpg"],
+    ["qwantani_night_puresky","Sternennacht","qwantani_night_puresky.jpg"],
+    ["qwantani_moonrise_puresky","Mondaufgang","qwantani_moonrise_puresky.jpg"],
+    ["snow_field_puresky","Winterhimmel","snow_field_puresky.jpg"]
+  ];
+  var materials = [
+    ["","Nur Farbe",""], ["leafy_grass","Gras","leafy_grass"], ["aerial_sand","Sand","aerial_sand"],
+    ["dirt_floor","Erde","dirt_floor"], ["concrete_floor_01","Beton","concrete_floor_01"],
+    ["cobblestone_05","Pflaster","cobblestone_05"], ["snow_01","Schnee","snow_01"],
+    ["dark_wooden_planks","Holz","dark_wooden_planks"], ["blue_metal_plate","Metall","blue_metal_plate"]
+  ];
   function el(id){ return document.getElementById(id); }
   function emit(message){ if(window.EventBridge){ EventBridge.emitWebEvent(JSON.stringify(message)); } }
   function notice(text, type){ var n=el("notice"); n.textContent=text; n.className="notice "+(type||""); }
-  function setConfig(c){ state=c; fields.forEach(function(k){ var input=el(k); if(!input||c[k]===undefined)return; if(input.type==="checkbox")input.checked=Boolean(c[k]); else input.value=c[k]; }); Object.keys(vectors).forEach(function(k){ vectors[k].forEach(function(id,i){ el(id).value=c[k]["xyz"[i]]; }); }); outputs(); }
+  function setConfig(c){ state=c; fields.forEach(function(k){ var input=el(k); if(!input||c[k]===undefined)return; if(input.type==="checkbox")input.checked=Boolean(c[k]); else input.value=c[k]; }); Object.keys(vectors).forEach(function(k){ vectors[k].forEach(function(id,i){ el(id).value=c[k]["xyz"[i]]; }); }); selectAsset("skyboxLibrary",c.skyboxPreset||""); selectAsset("materialLibrary",c.groundMaterialPreset||""); outputs(); }
   function getConfig(){ var c=JSON.parse(JSON.stringify(state)); fields.forEach(function(k){ var input=el(k); if(!input)return; c[k]=input.type==="checkbox"?input.checked:(input.type==="number"||input.type==="range"?Number(input.value):input.value); }); Object.keys(vectors).forEach(function(k){ c[k]={}; vectors[k].forEach(function(id,i){ c[k]["xyz"[i]]=Number(el(id).value); }); }); return c; }
   function outputs(){ el("ambientIntensityOut").textContent=Number(el("ambientIntensity").value).toFixed(2); el("sunIntensityOut").textContent=Number(el("sunIntensity").value).toFixed(2); }
+  function selectAsset(container,id){ document.querySelectorAll("#"+container+" .asset").forEach(function(b){b.classList.toggle("selected",b.dataset.id===id);}); }
+  function buildAssets(container,items,type){ items.forEach(function(item){ var b=document.createElement("button"); var imagePath; b.className="asset"+(item[0]?"":" none"); b.dataset.id=item[0]; if(item[2]){imagePath=type==="sky"?"skyboxes/"+item[2]:"materials/"+item[2]+"/albedo.jpg";b.style.backgroundImage="url('../assets/"+imagePath+"')";} b.innerHTML="<span>"+item[1]+"</span>"; b.onclick=function(){ if(type==="sky"){state.skyboxPreset=item[0];el("skyboxURL").value="";}else{state.groundMaterialPreset=item[0];el("groundMaterialURL").value="";} selectAsset(container,item[0]); }; el(container).appendChild(b); }); }
+  buildAssets("skyboxLibrary",skyboxes,"sky"); buildAssets("materialLibrary",materials,"material");
   Object.keys(presets).forEach(function(key){ var p=presets[key],b=document.createElement("button"); b.className="preset"; b.innerHTML=p.label+"<span>"+p.note+"</span>"; b.onclick=function(){ var c=getConfig(); Object.keys(p).forEach(function(k){ if(k!=="label"&&k!=="note")c[k]=p[k]; }); setConfig(c); notice("Vorlage „"+p.label+"“ gewählt. Noch nicht angewendet."); }; el("presets").appendChild(b); });
   document.querySelectorAll("nav button").forEach(function(b){ b.onclick=function(){ document.querySelectorAll("nav button,main section").forEach(function(x){x.classList.remove("active");}); b.classList.add("active"); document.querySelector('[data-panel="'+b.dataset.tab+'"]').classList.add("active"); }; });
   ["ambientIntensity","sunIntensity"].forEach(function(id){el(id).addEventListener("input",outputs);});

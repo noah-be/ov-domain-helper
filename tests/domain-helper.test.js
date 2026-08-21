@@ -88,6 +88,15 @@ assert.strictEqual(emitted[emitted.length - 1].type, "applied");
 webHandler(JSON.stringify({ type: "apply", config: config }));
 assert.strictEqual(Object.keys(store).length, 4, "second apply should update instead of duplicating");
 
+config.groundMaterialPreset = "leafy_grass";
+webHandler(JSON.stringify({ type: "apply", config: config }));
+assert.strictEqual(Object.keys(store).length, 5, "material preset should add one managed Material entity");
+var materialID = Object.keys(store).filter(function (id) { return store[id].type === "Material"; })[0];
+assert(materialID, "material entity should exist");
+assert(store[materialID].parentID, "material entity should be parented to the ground");
+assert.strictEqual(store[materialID].materialURL, "materialData");
+assert(JSON.parse(store[materialID].materialData).materials.albedoMap.indexOf("leafy_grass/albedo.jpg") !== -1);
+
 store.foreign = { type: "Box", name: "User content", userData: "{}" };
 webHandler(JSON.stringify({ type: "remove" }));
 assert.deepStrictEqual(Object.keys(store), ["foreign"], "remove must preserve unmarked entities");

@@ -44,6 +44,8 @@
     </section>
     <section data-panel="environment">
       <h2>Himmel</h2>
+      <p class="muted">Mitgelieferte CC0-Himmel von Poly Haven</p>
+      <div id="skyboxLibrary" class="asset-grid"></div>
       <label>Skybox-URL<input id="skyboxURL" type="url" placeholder="https://…/sky.ktx"></label>
       <div class="row two">
         <label>Himmelsfarbe<input id="skyColor" type="color"></label>
@@ -69,6 +71,9 @@
     </section>
     <section data-panel="ground">
       <label class="switch prominent"><input id="groundEnabled" type="checkbox"><span>Boden erstellen</span></label>
+      <h2>Materialbibliothek</h2>
+      <p class="muted">Mitgelieferte CC0-PBR-Materialien von Poly Haven</p>
+      <div id="materialLibrary" class="asset-grid"></div>
       <div class="row two">
         <label>Form<select id="groundShape"><option value="Cube">Fläche</option><option value="Cylinder">Zylinder</option></select></label>
         <label>Farbe<input id="groundColor" type="color"></label>
@@ -79,6 +84,7 @@
         <label>Tiefe<input id="groundSizeZ" type="number" min="0.1"></label>
       </div>
       <label>Material-URL<input id="groundMaterialURL" type="url" placeholder="materialData oder Material-URL"></label>
+      <label>Kachelung<input id="groundMaterialScale" type="number" min="0.01" max="1000" step="0.5"></label>
       <label class="switch"><input id="groundCollisionless" type="checkbox"><span>Ohne Kollision</span></label>
       <label class="switch"><input id="spawnMarker" type="checkbox"><span>Startpunkt markieren</span></label>
     </section>

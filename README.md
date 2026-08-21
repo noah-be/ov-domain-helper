@@ -2,7 +2,7 @@
 
 Eine Tablet-App für [Overte](https://overte.org/), die eine frische Domain mit den wichtigsten Welt-Entities einrichtet.
 
-**Version:** 0.1.0
+**Version:** 0.2.0
 
 ## Aktueller Funktionsumfang
 
@@ -10,6 +10,7 @@ Eine Tablet-App für [Overte](https://overte.org/), die eine frische Domain mit 
 - konfigurierbarer Boden mit Kollision und optionalem Material
 - optionales Fülllicht und Spawn-Marker
 - Vorlagen für Tageslicht, Sonnenuntergang, Nacht und Studio
+- integrierte CC0-Bibliothek mit neun Himmeln und acht PBR-Bodenmaterialien
 - vorhandenes Setup erkennen und bearbeiten
 - einmaliges Rückgängig sowie sicheres Entfernen ausschließlich eigener Entities
 - Berechtigungsprüfung vor Änderungen
@@ -32,6 +33,8 @@ Die App kennzeichnet ihre Entities in `userData` mit `org.overte.ov-domain-helpe
 ## Berechtigungen und Netzwerkzugriffe
 
 Die App benötigt die Berechtigung, Domain-Entities zu erstellen und zu bearbeiten. Sie überträgt keine Nutzerdaten und benötigt keinen externen Dienst. Netzwerkzugriffe entstehen nur, wenn ein Benutzer selbst URLs für Skybox-, Ambient- oder Material-Assets einträgt.
+
+Die mitgelieferten Himmel und Bodenmaterialien stammen von Poly Haven und stehen unter CC0. Quellen und Urheber sind in [`assets/catalog.json`](assets/catalog.json) dokumentiert.
 
 ## Community Apps
 

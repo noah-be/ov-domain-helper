@@ -16,6 +16,19 @@ function read(file) { return fs.readFileSync(path.join(root, file), "utf8"); }
     assert(fs.existsSync(path.join(root, file)), "missing package file: " + file);
 });
 
+var catalog = JSON.parse(read("assets/catalog.json"));
+assert.strictEqual(catalog.license, "CC0-1.0");
+assert(catalog.skyboxes.length >= 8, "library should cover the basic sky conditions");
+assert(catalog.materials.length >= 8, "library should cover the basic ground types");
+catalog.skyboxes.forEach(function (asset) {
+    assert(fs.existsSync(path.join(root, "assets", asset.file)), "missing skybox: " + asset.id);
+});
+catalog.materials.forEach(function (asset) {
+    ["albedo.jpg", "normal.jpg", "roughness.jpg"].forEach(function (map) {
+        assert(fs.existsSync(path.join(root, "assets", asset.directory, map)), "missing material map: " + asset.id + "/" + map);
+    });
+});
+
 var icon = read("domain-helper.svg");
 assert(/<svg[^>]+width="50"[^>]+height="50"/.test(icon), "icon must declare a 50x50 size");
 

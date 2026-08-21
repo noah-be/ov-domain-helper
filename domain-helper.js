@@ -12,14 +12,14 @@
 
     var APP_NAME = "DOMAIN";
     var APP_ID = "org.overte.ov-domain-helper";
-    var VERSION = 1;
+    var VERSION = 2;
     var SEARCH_RADIUS = 16384;
     var UI_URL = Script.resolvePath("ui/index.html");
     var ICON_URL = Script.resolvePath("domain-helper.svg");
     var tablet = Tablet.getTablet("com.highfidelity.interface.tablet.system");
     var button = tablet.addButton({ text: APP_NAME, icon: ICON_URL, activeIcon: ICON_URL });
     var onScreen = false;
-    var entityIDs = { zone: null, ground: null, light: null, spawn: null };
+    var entityIDs = { zone: null, ground: null, groundMaterial: null, light: null, spawn: null };
     var lastSnapshot = null;
 
     var DEFAULT_CONFIG = {
@@ -27,6 +27,7 @@
         center: { x: 0, y: 0, z: 0 },
         size: { x: 2000, y: 1000, z: 2000 },
         skyboxURL: "",
+        skyboxPreset: "",
         skyColor: "#8fb9df",
         ambientURL: "",
         ambientIntensity: 0.55,
@@ -43,6 +44,8 @@
         groundSize: { x: 500, y: 0.5, z: 500 },
         groundColor: "#6f8d58",
         groundMaterialURL: "",
+        groundMaterialPreset: "",
+        groundMaterialScale: 10,
         groundCollisionless: false,
         lightEnabled: false,
         lightColor: "#ffffff",
@@ -50,6 +53,16 @@
         lightFalloffRadius: 20,
         spawnMarker: true
     };
+
+    var SKYBOX_PRESETS = [
+        "autumn_field_puresky", "aristea_wreck_puresky", "kloofendal_overcast_puresky",
+        "kloofendal_misty_morning_puresky", "qwantani_sunrise_puresky", "belfast_sunset_puresky",
+        "qwantani_night_puresky", "qwantani_moonrise_puresky", "snow_field_puresky"
+    ];
+    var MATERIAL_PRESETS = [
+        "leafy_grass", "aerial_sand", "dirt_floor", "concrete_floor_01",
+        "cobblestone_05", "snow_01", "dark_wooden_planks", "blue_metal_plate"
+    ];
 
     function clone(value) { return JSON.parse(JSON.stringify(value)); }
 
@@ -87,7 +100,7 @@
     }
 
     function discover() {
-        entityIDs = { zone: null, ground: null, light: null, spawn: null };
+        entityIDs = { zone: null, ground: null, groundMaterial: null, light: null, spawn: null };
         Entities.findEntities(MyAvatar.position, SEARCH_RADIUS).forEach(function (id) {
             var props = Entities.getEntityProperties(id, ["userData"]);
             var data = parseMarker(props.userData);
@@ -117,7 +130,14 @@
         c.hazeRange = clamp(c.hazeRange, 1, 10000);
         c.lightIntensity = clamp(c.lightIntensity, 0, 100);
         c.lightFalloffRadius = clamp(c.lightFalloffRadius, 0.1, 1000);
+        c.groundMaterialScale = clamp(c.groundMaterialScale, 0.01, 1000);
+        if (SKYBOX_PRESETS.indexOf(c.skyboxPreset) === -1) { c.skyboxPreset = ""; }
+        if (MATERIAL_PRESETS.indexOf(c.groundMaterialPreset) === -1) { c.groundMaterialPreset = ""; }
         return c;
+    }
+
+    function assetURL(path) {
+        return Script.resolvePath("assets/" + path).replace(/%5C/g, "/");
     }
 
     function sunDirection(config) {
@@ -131,7 +151,7 @@
     }
 
     function zoneProperties(c) {
-        var skyURL = String(c.skyboxURL || "").trim();
+        var skyURL = c.skyboxPreset ? assetURL("skyboxes/" + c.skyboxPreset + ".jpg") : String(c.skyboxURL || "").trim();
         var ambientURL = String(c.ambientURL || skyURL).trim();
         return {
             type: "Zone",
@@ -165,11 +185,43 @@
             position: { x: c.center.x, y: c.center.y - c.groundSize.y / 2, z: c.center.z },
             dimensions: c.groundSize,
             color: color(c.groundColor, "#6f8d58"),
-            materialURL: String(c.groundMaterialURL || "").trim(),
             collisionless: Boolean(c.groundCollisionless),
             dynamic: false,
             userData: marker("ground")
         };
+    }
+
+    function groundMaterialProperties(c) {
+        var customURL = String(c.groundMaterialURL || "").trim();
+        var preset = c.groundMaterialPreset;
+        var properties = {
+            type: "Material",
+            name: "OV Domain Helper · Ground Material",
+            parentID: entityIDs.ground,
+            localPosition: { x: 0, y: 0, z: 0 },
+            priority: 1,
+            parentMaterialName: "0",
+            materialMappingMode: "uv",
+            materialMappingScale: { x: c.groundMaterialScale, y: c.groundMaterialScale },
+            userData: marker("groundMaterial")
+        };
+        if (preset) {
+            var root = "materials/" + preset + "/";
+            properties.materialURL = "materialData";
+            properties.materialData = JSON.stringify({
+                materialVersion: 1,
+                materials: {
+                    model: "hifi_pbr",
+                    albedo: [1, 1, 1],
+                    albedoMap: assetURL(root + "albedo.jpg"),
+                    roughnessMap: assetURL(root + "roughness.jpg"),
+                    normalMap: assetURL(root + "normal.jpg")
+                }
+            });
+        } else {
+            properties.materialURL = customURL;
+        }
+        return properties;
     }
 
     function lightProperties(c) {
@@ -234,6 +286,7 @@
         var c = sanitize(rawConfig);
         upsert("zone", true, zoneProperties(c));
         upsert("ground", c.groundEnabled, groundProperties(c));
+        upsert("groundMaterial", c.groundEnabled && Boolean(c.groundMaterialPreset || String(c.groundMaterialURL || "").trim()), groundMaterialProperties(c));
         upsert("light", c.lightEnabled, lightProperties(c));
         upsert("spawn", c.spawnMarker, spawnProperties(c));
         send({ type: "applied", config: c, entities: entityIDs });
@@ -244,7 +297,7 @@
         Object.keys(entityIDs).forEach(function (role) {
             if (entityIDs[role]) { Entities.deleteEntity(entityIDs[role]); }
         });
-        entityIDs = { zone: null, ground: null, light: null, spawn: null };
+        entityIDs = { zone: null, ground: null, groundMaterial: null, light: null, spawn: null };
         send({ type: "removed" });
     }
 
@@ -254,6 +307,7 @@
         Object.keys(lastSnapshot).forEach(function (role) {
             var props = lastSnapshot[role];
             delete props.id;
+            if (role === "groundMaterial" && entityIDs.ground) { props.parentID = entityIDs.ground; }
             entityIDs[role] = Entities.addEntity(props);
         });
         lastSnapshot = null;

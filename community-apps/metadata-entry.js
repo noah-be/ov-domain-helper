@@ -4,7 +4,7 @@
     "isActive": true,
     "directory": "ov-domain-helper",
     "name": "OV Domain Helper",
-    "description": "Set up and safely maintain the basic environment of a new Overte domain from a tablet app. Configure the environment zone, skybox, ambient and key light, haze, ground, fill light, and spawn marker using reusable presets. Requires permission to rez domain entities.",
+    "description": "Set up and safely maintain the basic environment of a new Overte domain from a tablet app. Configure the environment zone, skybox, ambient and key light, haze, ground, fill light, and spawn marker using reusable presets and a bundled CC0 sky and material library. Requires permission to rez domain entities.",
     "jsfile": "ov-domain-helper/domain-helper.js",
     "icon": "ov-domain-helper/domain-helper.svg",
     "caption": "DOMAIN"

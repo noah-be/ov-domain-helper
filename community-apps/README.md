@@ -12,6 +12,7 @@ Copy the repository contents into `applications/ov-domain-helper`, excluding:
 - `.github/`
 - `community-apps/`
 - `tests/`
+- `scripts/`
 
 The required files are already in the expected locations:
 
@@ -19,6 +20,7 @@ The required files are already in the expected locations:
 - 50×50 inactive tablet icon: `domain-helper.svg`
 - UI: `ui/`
 - license: `LICENSE`
+- bundled CC0 skyboxes and materials: `assets/`
 
 ## Metadata
 

@@ -1,0 +1,26 @@
+{
+  "license": "CC0-1.0",
+  "licenseUrl": "https://polyhaven.com/license",
+  "source": "Poly Haven",
+  "skyboxes": [
+    {"id":"autumn_field_puresky","title":"Clear Day","sourceTitle":"Autumn Field (Pure Sky)","sourceUrl":"https://polyhaven.com/a/autumn_field_puresky","authors":["Jarod Guest","Sergej Majboroda"],"file":"skyboxes/autumn_field_puresky.jpg","tags":["day","clear"]},
+    {"id":"aristea_wreck_puresky","title":"Partly Cloudy","sourceTitle":"Aristea Wreck (Pure Sky)","sourceUrl":"https://polyhaven.com/a/aristea_wreck_puresky","authors":["Greg Zaal","Jarod Guest"],"file":"skyboxes/aristea_wreck_puresky.jpg","tags":["day","partly-cloudy"]},
+    {"id":"kloofendal_overcast_puresky","title":"Overcast","sourceTitle":"Kloofendal Overcast (Pure Sky)","sourceUrl":"https://polyhaven.com/a/kloofendal_overcast_puresky","authors":["Greg Zaal"],"file":"skyboxes/kloofendal_overcast_puresky.jpg","tags":["day","overcast"]},
+    {"id":"kloofendal_misty_morning_puresky","title":"Misty Morning","sourceTitle":"Kloofendal Misty Morning (Pure Sky)","sourceUrl":"https://polyhaven.com/a/kloofendal_misty_morning_puresky","authors":["Greg Zaal"],"file":"skyboxes/kloofendal_misty_morning_puresky.jpg","tags":["day","mist","overcast"]},
+    {"id":"qwantani_sunrise_puresky","title":"Sunrise","sourceTitle":"Qwantani Sunrise (Pure Sky)","sourceUrl":"https://polyhaven.com/a/qwantani_sunrise_puresky","authors":["Greg Zaal","Jarod Guest"],"file":"skyboxes/qwantani_sunrise_puresky.jpg","tags":["sunrise","clear"]},
+    {"id":"belfast_sunset_puresky","title":"Sunset","sourceTitle":"Belfast Sunset (Pure Sky)","sourceUrl":"https://polyhaven.com/a/belfast_sunset_puresky","authors":["Dimitrios Savva","Greg Zaal","Jarod Guest"],"file":"skyboxes/belfast_sunset_puresky.jpg","tags":["sunset","partly-cloudy"]},
+    {"id":"qwantani_night_puresky","title":"Starry Night","sourceTitle":"Qwantani Night (Pure Sky)","sourceUrl":"https://polyhaven.com/a/qwantani_night_puresky","authors":["Greg Zaal","Jarod Guest"],"file":"skyboxes/qwantani_night_puresky.jpg","tags":["night","stars"]},
+    {"id":"qwantani_moonrise_puresky","title":"Moonrise","sourceTitle":"Qwantani Moonrise (Pure Sky)","sourceUrl":"https://polyhaven.com/a/qwantani_moonrise_puresky","authors":["Greg Zaal","Jarod Guest"],"file":"skyboxes/qwantani_moonrise_puresky.jpg","tags":["night","moon"]},
+    {"id":"snow_field_puresky","title":"Winter Sky","sourceTitle":"Snow Field (Pure Sky)","sourceUrl":"https://polyhaven.com/a/snow_field_puresky","authors":["Jarod Guest","Sergej Majboroda"],"file":"skyboxes/snow_field_puresky.jpg","tags":["winter","overcast"]}
+  ],
+  "materials": [
+    {"id":"leafy_grass","title":"Grass","sourceTitle":"Leafy Grass","sourceUrl":"https://polyhaven.com/a/leafy_grass","authors":["Charlotte Baglioni"],"directory":"materials/leafy_grass"},
+    {"id":"aerial_sand","title":"Sand","sourceTitle":"Aerial Sand","sourceUrl":"https://polyhaven.com/a/aerial_sand","authors":["Rob Tuytel"],"directory":"materials/aerial_sand"},
+    {"id":"dirt_floor","title":"Dirt","sourceTitle":"Dirt Floor","sourceUrl":"https://polyhaven.com/a/dirt_floor","authors":["eye-candy.xyz"],"directory":"materials/dirt_floor"},
+    {"id":"concrete_floor_01","title":"Concrete","sourceTitle":"Concrete Floor 01","sourceUrl":"https://polyhaven.com/a/concrete_floor_01","authors":["Rob Tuytel"],"directory":"materials/concrete_floor_01"},
+    {"id":"cobblestone_05","title":"Cobblestone","sourceTitle":"Cobblestone 05","sourceUrl":"https://polyhaven.com/a/cobblestone_05","authors":["Rob Tuytel"],"directory":"materials/cobblestone_05"},
+    {"id":"snow_01","title":"Snow","sourceTitle":"Snow 01","sourceUrl":"https://polyhaven.com/a/snow_01","authors":["Rob Tuytel"],"directory":"materials/snow_01"},
+    {"id":"dark_wooden_planks","title":"Dark Wood","sourceTitle":"Dark Wooden Planks","sourceUrl":"https://polyhaven.com/a/dark_wooden_planks","authors":["Amal Kumar"],"directory":"materials/dark_wooden_planks"},
+    {"id":"blue_metal_plate","title":"Metal","sourceTitle":"Blue Metal Plate","sourceUrl":"https://polyhaven.com/a/blue_metal_plate","authors":["Rob Tuytel"],"directory":"materials/blue_metal_plate"}
+  ]
+}

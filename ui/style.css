@@ -27,8 +27,14 @@ input[type=range] { width:100%; accent-color:var(--accent); }
 .preset-grid { display:grid; grid-template-columns:1fr 1fr; gap:9px; }
 .preset { text-align:left; min-height:66px; padding:10px; border:1px solid var(--line); background:var(--card); color:var(--text); border-radius:8px; }
 .preset span { display:block; color:var(--muted); font-size:11px; margin-top:2px; }
+.asset-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:7px; }
+.asset { position:relative; min-height:70px; padding:7px; overflow:hidden; text-align:left; border:2px solid transparent; background-position:center; background-size:cover; color:white; text-shadow:0 1px 3px #000; }
+.asset::before { content:""; position:absolute; inset:0; background:linear-gradient(transparent 25%,#000c); }
+.asset span { position:absolute; z-index:1; left:7px; right:5px; bottom:6px; font-size:11px; font-weight:bold; }
+.asset.selected { border-color:var(--accent); box-shadow:0 0 0 1px #000 inset; }
+.asset.none { background:#27333d; text-shadow:none; }
 button { cursor:pointer; border-radius:7px; padding:10px 12px; border:1px solid transparent; color:white; }
 .icon-button { background:var(--card); border-color:var(--line); font-size:20px; }.primary { background:#168fa3; }.secondary { background:#293640; }.danger { background:#9f3e45; }
 footer { position:fixed; bottom:0; left:0; right:0; z-index:3; display:grid; grid-template-columns:auto auto 1fr; gap:8px; padding:11px; background:#111820ee; border-top:1px solid var(--line); }
 dialog { color:var(--text); background:var(--card); border:1px solid var(--line); border-radius:10px; max-width:360px; } dialog::backdrop { background:#000a; } dialog div { display:flex; justify-content:flex-end; gap:8px; }
-@media(max-width:420px){ footer { grid-template-columns:1fr 1fr; }.primary { grid-column:1/-1; grid-row:1; }.row.three { grid-template-columns:1fr; } }
+@media(max-width:420px){ footer { grid-template-columns:1fr 1fr; }.primary { grid-column:1/-1; grid-row:1; }.row.three { grid-template-columns:1fr; }.asset-grid { grid-template-columns:1fr 1fr; } }
