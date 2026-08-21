@@ -1,5 +1,10 @@
 "use strict";
 
+// Copyright 2026 Noah and OV Domain Helper contributors.
+// SPDX-License-Identifier: Apache-2.0
+// Distributed under the Apache License, Version 2.0.
+// See the accompanying LICENSE file or http://www.apache.org/licenses/LICENSE-2.0.html
+
 var assert = require("assert");
 var fs = require("fs");
 var vm = require("vm");

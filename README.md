@@ -2,6 +2,8 @@
 
 Eine Tablet-App für [Overte](https://overte.org/), die eine frische Domain mit den wichtigsten Welt-Entities einrichtet.
 
+**Version:** 0.1.0
+
 ## Aktueller Funktionsumfang
 
 - zentrale Environment-Zone mit Skybox, Ambient Light, Sonne und Haze
@@ -27,6 +29,14 @@ Wähle eine Vorlage oder passe die Bereiche **Umgebung**, **Boden** und **Licht*
 
 Die App kennzeichnet ihre Entities in `userData` mit `org.overte.ov-domain-helper`. Fremde Entities werden weder verändert noch entfernt.
 
+## Berechtigungen und Netzwerkzugriffe
+
+Die App benötigt die Berechtigung, Domain-Entities zu erstellen und zu bearbeiten. Sie überträgt keine Nutzerdaten und benötigt keinen externen Dienst. Netzwerkzugriffe entstehen nur, wenn ein Benutzer selbst URLs für Skybox-, Ambient- oder Material-Assets einträgt.
+
+## Community Apps
+
+Das Repository ist strukturell für eine spätere Einreichung bei Overte Community Apps vorbereitet. Die Metadaten und Prüfliste liegen unter [`community-apps/`](community-apps/). Diese Vorbereitung ist noch keine Einreichung.
+
 ## Entwicklung
 
 Es gibt absichtlich keinen Build-Schritt und keine externen Abhängigkeiten. JavaScript muss mit der in Overte eingebetteten Script Engine kompatibel bleiben; deshalb verwendet das Clientskript ES5-Syntax.
@@ -35,6 +45,7 @@ Tests ausführen:
 
 ```sh
 node tests/domain-helper.test.js
+node tests/submission.test.js
 ```
 
 ## Roadmap

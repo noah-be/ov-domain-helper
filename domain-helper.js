@@ -2,6 +2,11 @@
 // ov-domain-helper - Overte tablet app for bootstrapping a new domain.
 // Load this file as a client script in Overte Interface.
 //
+// Copyright 2026 Noah and OV Domain Helper contributors.
+// SPDX-License-Identifier: Apache-2.0
+// Distributed under the Apache License, Version 2.0.
+// See the accompanying LICENSE file or http://www.apache.org/licenses/LICENSE-2.0.html
+//
 (function () {
     "use strict";
 
@@ -10,7 +15,7 @@
     var VERSION = 1;
     var SEARCH_RADIUS = 16384;
     var UI_URL = Script.resolvePath("ui/index.html");
-    var ICON_URL = Script.resolvePath("icons/domain-helper.svg");
+    var ICON_URL = Script.resolvePath("domain-helper.svg");
     var tablet = Tablet.getTablet("com.highfidelity.interface.tablet.system");
     var button = tablet.addButton({ text: APP_NAME, icon: ICON_URL, activeIcon: ICON_URL });
     var onScreen = false;

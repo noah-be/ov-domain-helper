@@ -1,0 +1,14 @@
+{
+  "appActive": true,
+  "appBaseDirectory": "ov-domain-helper",
+  "appName": "OV Domain Helper",
+  "appDescription": "Set up and safely maintain the basic environment of a new Overte domain from a tablet app. Configure the environment zone, skybox, ambient and key light, haze, ground, fill light, and spawn marker using reusable presets. Requires permission to rez domain entities.",
+  "appScriptVersions": {
+    "Stable": "domain-helper.js"
+  },
+  "appIcon": "domain-helper.svg",
+  "appAuthor": "Noah",
+  "appAgeMaturity": "EVERYONE",
+  "appCategory": "UTILITY",
+  "appHomeUrl": "https://github.com/noah-be/ov-domain-helper"
+}
