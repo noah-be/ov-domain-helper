@@ -4,7 +4,7 @@ All notable changes to OV Domain Helper are documented here.
 
 ## Unreleased
 
-- Increased the bundled ambient loops from -20 LUFS to -12 LUFS so they remain clearly audible in Overte.
+- Increased the bundled ambient loops by 20 dB before peak limiting compared with the original release so they remain clearly audible in Overte.
 - Increased the default ambient volume from 20% to 35%.
 
 ## 0.2.2 - 2026-08-22
