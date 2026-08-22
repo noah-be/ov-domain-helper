@@ -84,7 +84,8 @@
         <label>Depth<input id="groundSizeZ" type="number" min="0.1"></label>
       </div>
       <label>Material URL<input id="groundMaterialURL" type="url" placeholder="materialData or material URL"></label>
-      <label>Tiling<input id="groundMaterialScale" type="number" min="0.01" max="1000" step="0.5"></label>
+      <label>Texture tile size (meters)<input id="groundTextureSize" type="number" min="0.25" max="100" step="0.25"></label>
+      <p class="muted">Smaller values make the ground texture repeat more often and appear sharper.</p>
       <label class="switch"><input id="groundCollisionless" type="checkbox"><span>Disable collisions</span></label>
       <label class="switch"><input id="spawnMarker" type="checkbox"><span>Mark spawn point</span></label>
     </section>

@@ -89,12 +89,16 @@ webHandler(JSON.stringify({ type: "apply", config: config }));
 assert.strictEqual(Object.keys(store).length, 4, "second apply should update instead of duplicating");
 
 config.groundMaterialPreset = "leafy_grass";
+config.groundMaterialScale = 10; // Legacy 0.2.0 value must not override the new physical tile size.
 webHandler(JSON.stringify({ type: "apply", config: config }));
 assert.strictEqual(Object.keys(store).length, 5, "material preset should add one managed Material entity");
 var materialID = Object.keys(store).filter(function (id) { return store[id].type === "Material"; })[0];
 assert(materialID, "material entity should exist");
 assert(store[materialID].parentID, "material entity should be parented to the ground");
 assert.strictEqual(store[materialID].materialURL, "materialData");
+assert.strictEqual(store[materialID].materialRepeat, true);
+assert.strictEqual(store[materialID].materialMappingScale.x, 12.5, "50m ground should repeat every 4m");
+assert.strictEqual(store[materialID].materialMappingScale.y, 12.5, "50m ground should repeat every 4m");
 assert(JSON.parse(store[materialID].materialData).materials.albedoMap.indexOf("leafy_grass/albedo.jpg") !== -1);
 
 store.foreign = { type: "Box", name: "User content", userData: "{}" };

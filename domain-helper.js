@@ -45,7 +45,7 @@
         groundColor: "#6f8d58",
         groundMaterialURL: "",
         groundMaterialPreset: "",
-        groundMaterialScale: 10,
+        groundTextureSize: 4,
         groundCollisionless: false,
         lightEnabled: false,
         lightColor: "#ffffff",
@@ -130,7 +130,7 @@
         c.hazeRange = clamp(c.hazeRange, 1, 10000);
         c.lightIntensity = clamp(c.lightIntensity, 0, 100);
         c.lightFalloffRadius = clamp(c.lightFalloffRadius, 0.1, 1000);
-        c.groundMaterialScale = clamp(c.groundMaterialScale, 0.01, 1000);
+        c.groundTextureSize = clamp(c.groundTextureSize, 0.25, 100);
         if (SKYBOX_PRESETS.indexOf(c.skyboxPreset) === -1) { c.skyboxPreset = ""; }
         if (MATERIAL_PRESETS.indexOf(c.groundMaterialPreset) === -1) { c.groundMaterialPreset = ""; }
         return c;
@@ -202,7 +202,11 @@
             priority: 1,
             parentMaterialName: "0",
             materialMappingMode: "uv",
-            materialMappingScale: { x: c.groundMaterialScale, y: c.groundMaterialScale },
+            materialMappingScale: {
+                x: c.groundSize.x / c.groundTextureSize,
+                y: c.groundSize.z / c.groundTextureSize
+            },
+            materialRepeat: true,
             userData: marker("groundMaterial")
         };
         if (preset) {

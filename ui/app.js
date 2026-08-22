@@ -5,7 +5,7 @@
 (function () {
   "use strict";
   var state = {};
-  var fields = ["name","skyboxURL","skyboxPreset","skyColor","ambientURL","ambientIntensity","sunColor","sunIntensity","sunAzimuth","sunElevation","castShadows","hazeEnabled","hazeRange","hazeColor","groundEnabled","groundShape","groundColor","groundMaterialURL","groundMaterialPreset","groundMaterialScale","groundCollisionless","lightEnabled","lightColor","lightIntensity","lightFalloffRadius","spawnMarker"];
+  var fields = ["name","skyboxURL","skyboxPreset","skyColor","ambientURL","ambientIntensity","sunColor","sunIntensity","sunAzimuth","sunElevation","castShadows","hazeEnabled","hazeRange","hazeColor","groundEnabled","groundShape","groundColor","groundMaterialURL","groundMaterialPreset","groundTextureSize","groundCollisionless","lightEnabled","lightColor","lightIntensity","lightFalloffRadius","spawnMarker"];
   var vectors = { center:["centerX","centerY","centerZ"], size:["sizeX","sizeY","sizeZ"], groundSize:["groundSizeX","groundSizeY","groundSizeZ"] };
   var presets = {
     daylight:{ label:"Daylight", note:"Bright, neutral starting point", skyboxPreset:"autumn_field_puresky", groundMaterialPreset:"leafy_grass", skyColor:"#8fb9df", ambientIntensity:0.55, sunColor:"#fff4df", sunIntensity:1, sunAzimuth:135, sunElevation:45, hazeEnabled:false, groundColor:"#ffffff" },
