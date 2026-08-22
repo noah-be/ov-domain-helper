@@ -5,7 +5,7 @@
   See the accompanying LICENSE file or http://www.apache.org/licenses/LICENSE-2.0.html
 -->
 <!doctype html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,98 +14,98 @@
 </head>
 <body>
   <header>
-    <div><span class="eyebrow">OV DOMAIN HELPER</span><h1>Welt einrichten</h1></div>
-    <button id="refresh" class="icon-button" title="Neu laden">↻</button>
+    <div><span class="eyebrow">OV DOMAIN HELPER</span><h1>Set up your world</h1></div>
+    <button id="refresh" class="icon-button" title="Refresh">↻</button>
   </header>
-  <div id="notice" class="notice">Verbindung mit Overte …</div>
-  <nav id="tabs" aria-label="Bereiche">
-    <button data-tab="presets" class="active">Vorlagen</button>
-    <button data-tab="environment">Umgebung</button>
-    <button data-tab="ground">Boden</button>
-    <button data-tab="light">Licht</button>
+  <div id="notice" class="notice">Connecting to Overte…</div>
+  <nav id="tabs" aria-label="Sections">
+    <button data-tab="presets" class="active">Presets</button>
+    <button data-tab="environment">Environment</button>
+    <button data-tab="ground">Ground</button>
+    <button data-tab="light">Light</button>
   </nav>
   <main>
     <section data-panel="presets" class="active">
-      <h2>Schnellstart</h2>
-      <p class="muted">Wähle eine Grundlage und passe sie anschließend an.</p>
+      <h2>Quick start</h2>
+      <p class="muted">Choose a starting point, then customize it.</p>
       <div id="presets" class="preset-grid"></div>
-      <label>Weltname<input id="name" type="text" maxlength="80"></label>
-      <h2>Weltbereich</h2>
+      <label>World name<input id="name" type="text" maxlength="80"></label>
+      <h2>World area</h2>
       <div class="row three">
-        <label>Mitte X<input id="centerX" type="number" step="1"></label>
+        <label>Center X<input id="centerX" type="number" step="1"></label>
         <label>Y<input id="centerY" type="number" step="1"></label>
         <label>Z<input id="centerZ" type="number" step="1"></label>
       </div>
       <div class="row three">
-        <label>Breite<input id="sizeX" type="number" min="1"></label>
-        <label>Höhe<input id="sizeY" type="number" min="1"></label>
-        <label>Tiefe<input id="sizeZ" type="number" min="1"></label>
+        <label>Width<input id="sizeX" type="number" min="1"></label>
+        <label>Height<input id="sizeY" type="number" min="1"></label>
+        <label>Depth<input id="sizeZ" type="number" min="1"></label>
       </div>
     </section>
     <section data-panel="environment">
-      <h2>Himmel</h2>
-      <p class="muted">Mitgelieferte CC0-Himmel von Poly Haven</p>
+      <h2>Sky</h2>
+      <p class="muted">Bundled CC0 skies from Poly Haven</p>
       <div id="skyboxLibrary" class="asset-grid"></div>
       <label>Skybox-URL<input id="skyboxURL" type="url" placeholder="https://…/sky.ktx"></label>
       <div class="row two">
-        <label>Himmelsfarbe<input id="skyColor" type="color"></label>
-        <label>Ambient-Intensität <output id="ambientIntensityOut"></output><input id="ambientIntensity" type="range" min="0" max="3" step="0.05"></label>
+        <label>Sky color<input id="skyColor" type="color"></label>
+        <label>Ambient intensity <output id="ambientIntensityOut"></output><input id="ambientIntensity" type="range" min="0" max="3" step="0.05"></label>
       </div>
-      <label>Ambient-Map (leer = Skybox)<input id="ambientURL" type="url" placeholder="https://…/ambient.ktx"></label>
-      <h2>Sonne</h2>
+      <label>Ambient map (blank = skybox)<input id="ambientURL" type="url" placeholder="https://…/ambient.ktx"></label>
+      <h2>Sun</h2>
       <div class="row two">
-        <label>Farbe<input id="sunColor" type="color"></label>
-        <label>Intensität <output id="sunIntensityOut"></output><input id="sunIntensity" type="range" min="0" max="5" step="0.05"></label>
+        <label>Color<input id="sunColor" type="color"></label>
+        <label>Intensity <output id="sunIntensityOut"></output><input id="sunIntensity" type="range" min="0" max="5" step="0.05"></label>
       </div>
       <div class="row two">
-        <label>Azimut<input id="sunAzimuth" type="number" min="0" max="360"></label>
-        <label>Höhe<input id="sunElevation" type="number" min="-90" max="90"></label>
+        <label>Azimuth<input id="sunAzimuth" type="number" min="0" max="360"></label>
+        <label>Elevation<input id="sunElevation" type="number" min="-90" max="90"></label>
       </div>
-      <label class="switch"><input id="castShadows" type="checkbox"><span>Schatten aktivieren</span></label>
-      <h2>Nebel</h2>
-      <label class="switch"><input id="hazeEnabled" type="checkbox"><span>Nebel aktivieren</span></label>
+      <label class="switch"><input id="castShadows" type="checkbox"><span>Enable shadows</span></label>
+      <h2>Haze</h2>
+      <label class="switch"><input id="hazeEnabled" type="checkbox"><span>Enable haze</span></label>
       <div class="row two">
-        <label>Farbe<input id="hazeColor" type="color"></label>
-        <label>Sichtweite<input id="hazeRange" type="number" min="1"></label>
+        <label>Color<input id="hazeColor" type="color"></label>
+        <label>Visibility range<input id="hazeRange" type="number" min="1"></label>
       </div>
     </section>
     <section data-panel="ground">
-      <label class="switch prominent"><input id="groundEnabled" type="checkbox"><span>Boden erstellen</span></label>
-      <h2>Materialbibliothek</h2>
-      <p class="muted">Mitgelieferte CC0-PBR-Materialien von Poly Haven</p>
+      <label class="switch prominent"><input id="groundEnabled" type="checkbox"><span>Create ground</span></label>
+      <h2>Material library</h2>
+      <p class="muted">Bundled CC0 PBR materials from Poly Haven</p>
       <div id="materialLibrary" class="asset-grid"></div>
       <div class="row two">
-        <label>Form<select id="groundShape"><option value="Cube">Fläche</option><option value="Cylinder">Zylinder</option></select></label>
-        <label>Farbe<input id="groundColor" type="color"></label>
+        <label>Shape<select id="groundShape"><option value="Cube">Plane</option><option value="Cylinder">Cylinder</option></select></label>
+        <label>Color<input id="groundColor" type="color"></label>
       </div>
       <div class="row three">
-        <label>Breite<input id="groundSizeX" type="number" min="0.1"></label>
-        <label>Dicke<input id="groundSizeY" type="number" min="0.1" step="0.1"></label>
-        <label>Tiefe<input id="groundSizeZ" type="number" min="0.1"></label>
+        <label>Width<input id="groundSizeX" type="number" min="0.1"></label>
+        <label>Thickness<input id="groundSizeY" type="number" min="0.1" step="0.1"></label>
+        <label>Depth<input id="groundSizeZ" type="number" min="0.1"></label>
       </div>
-      <label>Material-URL<input id="groundMaterialURL" type="url" placeholder="materialData oder Material-URL"></label>
-      <label>Kachelung<input id="groundMaterialScale" type="number" min="0.01" max="1000" step="0.5"></label>
-      <label class="switch"><input id="groundCollisionless" type="checkbox"><span>Ohne Kollision</span></label>
-      <label class="switch"><input id="spawnMarker" type="checkbox"><span>Startpunkt markieren</span></label>
+      <label>Material URL<input id="groundMaterialURL" type="url" placeholder="materialData or material URL"></label>
+      <label>Tiling<input id="groundMaterialScale" type="number" min="0.01" max="1000" step="0.5"></label>
+      <label class="switch"><input id="groundCollisionless" type="checkbox"><span>Disable collisions</span></label>
+      <label class="switch"><input id="spawnMarker" type="checkbox"><span>Mark spawn point</span></label>
     </section>
     <section data-panel="light">
-      <label class="switch prominent"><input id="lightEnabled" type="checkbox"><span>Zusätzliches Fülllicht</span></label>
+      <label class="switch prominent"><input id="lightEnabled" type="checkbox"><span>Additional fill light</span></label>
       <div class="row two">
-        <label>Farbe<input id="lightColor" type="color"></label>
-        <label>Intensität<input id="lightIntensity" type="number" min="0" max="100" step="0.1"></label>
+        <label>Color<input id="lightColor" type="color"></label>
+        <label>Intensity<input id="lightIntensity" type="number" min="0" max="100" step="0.1"></label>
       </div>
-      <label>Reichweite<input id="lightFalloffRadius" type="number" min="0.1" max="1000"></label>
+      <label>Range<input id="lightFalloffRadius" type="number" min="0.1" max="1000"></label>
     </section>
   </main>
   <footer>
-    <button id="undo" class="secondary">Rückgängig</button>
-    <button id="remove" class="danger">Setup entfernen</button>
-    <button id="apply" class="primary">Welt anwenden</button>
+    <button id="undo" class="secondary">Undo</button>
+    <button id="remove" class="danger">Remove setup</button>
+    <button id="apply" class="primary">Apply world</button>
   </footer>
   <dialog id="confirmDialog">
-    <h2>Setup entfernen?</h2>
-    <p>Nur Entities, die OV Domain Helper eindeutig gehören, werden gelöscht.</p>
-    <div><button id="cancelRemove" class="secondary">Abbrechen</button><button id="confirmRemove" class="danger">Entfernen</button></div>
+    <h2>Remove setup?</h2>
+    <p>Only entities clearly owned by OV Domain Helper will be deleted.</p>
+    <div><button id="cancelRemove" class="secondary">Cancel</button><button id="confirmRemove" class="danger">Remove</button></div>
   </dialog>
   <script src="app.js"></script>
 </body>

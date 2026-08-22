@@ -8,28 +8,28 @@
   var fields = ["name","skyboxURL","skyboxPreset","skyColor","ambientURL","ambientIntensity","sunColor","sunIntensity","sunAzimuth","sunElevation","castShadows","hazeEnabled","hazeRange","hazeColor","groundEnabled","groundShape","groundColor","groundMaterialURL","groundMaterialPreset","groundMaterialScale","groundCollisionless","lightEnabled","lightColor","lightIntensity","lightFalloffRadius","spawnMarker"];
   var vectors = { center:["centerX","centerY","centerZ"], size:["sizeX","sizeY","sizeZ"], groundSize:["groundSizeX","groundSizeY","groundSizeZ"] };
   var presets = {
-    daylight:{ label:"Tageslicht", note:"Heller, neutraler Start", skyboxPreset:"autumn_field_puresky", groundMaterialPreset:"leafy_grass", skyColor:"#8fb9df", ambientIntensity:0.55, sunColor:"#fff4df", sunIntensity:1, sunAzimuth:135, sunElevation:45, hazeEnabled:false, groundColor:"#ffffff" },
-    sunset:{ label:"Sonnenuntergang", note:"Warm und atmosphärisch", skyboxPreset:"belfast_sunset_puresky", groundMaterialPreset:"dirt_floor", skyColor:"#d77b62", ambientIntensity:0.35, sunColor:"#ffb066", sunIntensity:1.3, sunAzimuth:255, sunElevation:10, hazeEnabled:true, hazeRange:850, hazeColor:"#d59c86", groundColor:"#ffffff" },
-    night:{ label:"Nacht", note:"Kühl mit wenig Licht", skyboxPreset:"qwantani_night_puresky", groundMaterialPreset:"cobblestone_05", skyColor:"#07142d", ambientIntensity:0.12, sunColor:"#9fbaff", sunIntensity:0.18, sunAzimuth:210, sunElevation:55, hazeEnabled:false, groundColor:"#ffffff", lightEnabled:true, lightColor:"#b9d5ff", lightIntensity:2 },
-    studio:{ label:"Studio", note:"Neutral für Entwicklung", skyboxPreset:"", groundMaterialPreset:"concrete_floor_01", skyColor:"#454c54", ambientIntensity:0.8, sunColor:"#ffffff", sunIntensity:0.8, sunAzimuth:135, sunElevation:55, groundColor:"#ffffff", lightEnabled:true, lightIntensity:1.5, lightFalloffRadius:30 }
+    daylight:{ label:"Daylight", note:"Bright, neutral starting point", skyboxPreset:"autumn_field_puresky", groundMaterialPreset:"leafy_grass", skyColor:"#8fb9df", ambientIntensity:0.55, sunColor:"#fff4df", sunIntensity:1, sunAzimuth:135, sunElevation:45, hazeEnabled:false, groundColor:"#ffffff" },
+    sunset:{ label:"Sunset", note:"Warm and atmospheric", skyboxPreset:"belfast_sunset_puresky", groundMaterialPreset:"dirt_floor", skyColor:"#d77b62", ambientIntensity:0.35, sunColor:"#ffb066", sunIntensity:1.3, sunAzimuth:255, sunElevation:10, hazeEnabled:true, hazeRange:850, hazeColor:"#d59c86", groundColor:"#ffffff" },
+    night:{ label:"Night", note:"Cool with low light", skyboxPreset:"qwantani_night_puresky", groundMaterialPreset:"cobblestone_05", skyColor:"#07142d", ambientIntensity:0.12, sunColor:"#9fbaff", sunIntensity:0.18, sunAzimuth:210, sunElevation:55, hazeEnabled:false, groundColor:"#ffffff", lightEnabled:true, lightColor:"#b9d5ff", lightIntensity:2 },
+    studio:{ label:"Studio", note:"Neutral for development", skyboxPreset:"", groundMaterialPreset:"concrete_floor_01", skyColor:"#454c54", ambientIntensity:0.8, sunColor:"#ffffff", sunIntensity:0.8, sunAzimuth:135, sunElevation:55, groundColor:"#ffffff", lightEnabled:true, lightIntensity:1.5, lightFalloffRadius:30 }
   };
   var skyboxes = [
-    ["","Farbe",""],
-    ["autumn_field_puresky","Klarer Tag","autumn_field_puresky.jpg"],
-    ["aristea_wreck_puresky","Wolken","aristea_wreck_puresky.jpg"],
-    ["kloofendal_overcast_puresky","Bedeckt","kloofendal_overcast_puresky.jpg"],
-    ["kloofendal_misty_morning_puresky","Nebelmorgen","kloofendal_misty_morning_puresky.jpg"],
-    ["qwantani_sunrise_puresky","Sonnenaufgang","qwantani_sunrise_puresky.jpg"],
-    ["belfast_sunset_puresky","Sonnenuntergang","belfast_sunset_puresky.jpg"],
-    ["qwantani_night_puresky","Sternennacht","qwantani_night_puresky.jpg"],
-    ["qwantani_moonrise_puresky","Mondaufgang","qwantani_moonrise_puresky.jpg"],
-    ["snow_field_puresky","Winterhimmel","snow_field_puresky.jpg"]
+    ["","Color only",""],
+    ["autumn_field_puresky","Clear day","autumn_field_puresky.jpg"],
+    ["aristea_wreck_puresky","Clouds","aristea_wreck_puresky.jpg"],
+    ["kloofendal_overcast_puresky","Overcast","kloofendal_overcast_puresky.jpg"],
+    ["kloofendal_misty_morning_puresky","Misty morning","kloofendal_misty_morning_puresky.jpg"],
+    ["qwantani_sunrise_puresky","Sunrise","qwantani_sunrise_puresky.jpg"],
+    ["belfast_sunset_puresky","Sunset","belfast_sunset_puresky.jpg"],
+    ["qwantani_night_puresky","Starry night","qwantani_night_puresky.jpg"],
+    ["qwantani_moonrise_puresky","Moonrise","qwantani_moonrise_puresky.jpg"],
+    ["snow_field_puresky","Winter sky","snow_field_puresky.jpg"]
   ];
   var materials = [
-    ["","Nur Farbe",""], ["leafy_grass","Gras","leafy_grass"], ["aerial_sand","Sand","aerial_sand"],
-    ["dirt_floor","Erde","dirt_floor"], ["concrete_floor_01","Beton","concrete_floor_01"],
-    ["cobblestone_05","Pflaster","cobblestone_05"], ["snow_01","Schnee","snow_01"],
-    ["dark_wooden_planks","Holz","dark_wooden_planks"], ["blue_metal_plate","Metall","blue_metal_plate"]
+    ["","Color only",""], ["leafy_grass","Grass","leafy_grass"], ["aerial_sand","Sand","aerial_sand"],
+    ["dirt_floor","Dirt","dirt_floor"], ["concrete_floor_01","Concrete","concrete_floor_01"],
+    ["cobblestone_05","Cobblestone","cobblestone_05"], ["snow_01","Snow","snow_01"],
+    ["dark_wooden_planks","Wood","dark_wooden_planks"], ["blue_metal_plate","Metal","blue_metal_plate"]
   ];
   function el(id){ return document.getElementById(id); }
   function emit(message){ if(window.EventBridge){ EventBridge.emitWebEvent(JSON.stringify(message)); } }
@@ -40,15 +40,15 @@
   function selectAsset(container,id){ document.querySelectorAll("#"+container+" .asset").forEach(function(b){b.classList.toggle("selected",b.dataset.id===id);}); }
   function buildAssets(container,items,type){ items.forEach(function(item){ var b=document.createElement("button"); var imagePath; b.className="asset"+(item[0]?"":" none"); b.dataset.id=item[0]; if(item[2]){imagePath=type==="sky"?"skyboxes/"+item[2]:"materials/"+item[2]+"/albedo.jpg";b.style.backgroundImage="url('../assets/"+imagePath+"')";} b.innerHTML="<span>"+item[1]+"</span>"; b.onclick=function(){ if(type==="sky"){state.skyboxPreset=item[0];el("skyboxURL").value="";}else{state.groundMaterialPreset=item[0];el("groundMaterialURL").value="";} selectAsset(container,item[0]); }; el(container).appendChild(b); }); }
   buildAssets("skyboxLibrary",skyboxes,"sky"); buildAssets("materialLibrary",materials,"material");
-  Object.keys(presets).forEach(function(key){ var p=presets[key],b=document.createElement("button"); b.className="preset"; b.innerHTML=p.label+"<span>"+p.note+"</span>"; b.onclick=function(){ var c=getConfig(); Object.keys(p).forEach(function(k){ if(k!=="label"&&k!=="note")c[k]=p[k]; }); setConfig(c); notice("Vorlage „"+p.label+"“ gewählt. Noch nicht angewendet."); }; el("presets").appendChild(b); });
+  Object.keys(presets).forEach(function(key){ var p=presets[key],b=document.createElement("button"); b.className="preset"; b.innerHTML=p.label+"<span>"+p.note+"</span>"; b.onclick=function(){ var c=getConfig(); Object.keys(p).forEach(function(k){ if(k!=="label"&&k!=="note")c[k]=p[k]; }); setConfig(c); notice(p.label+" preset selected. Changes have not been applied yet."); }; el("presets").appendChild(b); });
   document.querySelectorAll("nav button").forEach(function(b){ b.onclick=function(){ document.querySelectorAll("nav button,main section").forEach(function(x){x.classList.remove("active");}); b.classList.add("active"); document.querySelector('[data-panel="'+b.dataset.tab+'"]').classList.add("active"); }; });
   ["ambientIntensity","sunIntensity"].forEach(function(id){el(id).addEventListener("input",outputs);});
-  el("apply").onclick=function(){ notice("Welt wird aktualisiert …"); emit({type:"apply",config:getConfig()}); };
+  el("apply").onclick=function(){ notice("Updating world…"); emit({type:"apply",config:getConfig()}); };
   el("undo").onclick=function(){ emit({type:"undo"}); };
   el("refresh").onclick=function(){ emit({type:"refresh"}); };
   el("remove").onclick=function(){ el("confirmDialog").showModal(); };
   el("cancelRemove").onclick=function(){ el("confirmDialog").close(); };
   el("confirmRemove").onclick=function(){ el("confirmDialog").close(); emit({type:"remove"}); };
-  function receive(raw){ var m; try{m=JSON.parse(raw);}catch(e){return;} if(m.type==="state"){setConfig(m.config); notice(m.canRez?(m.hasSetup?"Vorhandenes Setup geladen.":"Bereit für eine neue Welt."):"Nur Lesen: Dir fehlt die Rez-Berechtigung.",m.canRez?"success":"error"); el("apply").disabled=!m.canRez;} else if(m.type==="applied"){setConfig(m.config);notice("Welt erfolgreich aktualisiert.","success");} else if(m.type==="removed"){notice("Verwaltetes Setup entfernt.","success");} else if(m.type==="undone"){setConfig(m.config);notice("Vorheriger Zustand wiederhergestellt.","success");} else if(m.type==="error"){notice(m.message,"error");} }
-  if(window.EventBridge){ EventBridge.scriptEventReceived.connect(receive); emit({type:"ready"}); } else { notice("Vorschau im Browser – keine Verbindung zu Overte.","error"); }
+  function receive(raw){ var m; try{m=JSON.parse(raw);}catch(e){return;} if(m.type==="state"){setConfig(m.config); notice(m.canRez?(m.hasSetup?"Existing setup loaded.":"Ready to create a new world."):"Read only: You do not have permission to rez entities.",m.canRez?"success":"error"); el("apply").disabled=!m.canRez;} else if(m.type==="applied"){setConfig(m.config);notice("World updated successfully.","success");} else if(m.type==="removed"){notice("Managed setup removed.","success");} else if(m.type==="undone"){setConfig(m.config);notice("Previous state restored.","success");} else if(m.type==="error"){notice(m.message,"error");} }
+  if(window.EventBridge){ EventBridge.scriptEventReceived.connect(receive); emit({type:"ready"}); } else { notice("Browser preview — not connected to Overte.","error"); }
 }());

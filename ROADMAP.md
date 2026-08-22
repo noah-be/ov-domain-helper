@@ -1,108 +1,102 @@
-# Vorläufige Roadmap
+# Provisional roadmap
 
-Diese Roadmap beschreibt die derzeit geplante Entwicklung von OV Domain Helper.
-Reihenfolge und Umfang können sich nach Praxistests und Rückmeldungen aus der
-Overte-Community ändern.
+This roadmap describes the current development plan for OV Domain Helper. Its order and scope may change based on real-world testing and feedback from the Overte community.
 
-## Leitbild
+## Vision
 
-OV Domain Helper soll aus einer frischen Domain in wenigen nachvollziehbaren
-Schritten eine sichere, visuell brauchbare und später weiterhin wartbare Welt
-machen. Änderungen sollen reproduzierbar, übertragbar und ohne Gefährdung
-fremder Entities sein.
+OV Domain Helper should turn a fresh domain into a safe, visually useful, and maintainable world through a small number of understandable steps. Changes should be reproducible and portable without putting unrelated entities at risk.
 
-## 0.2.1 – Praxistest und Stabilisierung
+## 0.2.1 – Real-world testing and stabilization
 
-- Skyboxes und Ambient Lighting in Desktop und VR prüfen
-- PBR-Material-Mapping und Kachelung in Overte prüfen
-- Laden über eine öffentliche Skript-URL testen
-- Tablet-Oberfläche auf kleinen Auflösungen kontrollieren
-- fehlende Rez-, Edit- und Delete-Rechte verständlich behandeln
-- wiederholtes Anwenden, Rückgängig und Entfernen in einer echten Domain testen
-- gefundene Kompatibilitätsprobleme korrigieren
+- test skyboxes and ambient lighting in desktop and VR modes
+- verify PBR material mapping and tiling in Overte
+- test loading from a public script URL
+- check the tablet interface at small resolutions
+- handle missing rez, edit, and delete permissions clearly
+- test repeated application, undo, and removal in a real domain
+- fix any compatibility issues discovered during testing
 
-## 0.3.0 – Startbereich und Sicherheit
+## 0.3.0 – Landing area and safety
 
-- Position und Blickrichtung des Startbereichs einstellen
-- aktuelle Avatarposition und -ausrichtung übernehmen
-- Startplattform mit konfigurierbarer Größe erzeugen
-- optionalen Fallschutz oder unsichtbare Begrenzungen anlegen
-- Rückkehrpunkt für abgestürzte Avatare bereitstellen
-- optionales Willkommensschild mit Domainname und Beschreibung erzeugen
-- Unterschied zwischen Spawn-Marker und tatsächlichem Domain-Landepunkt erklären
+- configure landing position and facing direction
+- use the avatar's current position and orientation
+- generate a landing platform with a configurable size
+- add optional fall protection or invisible boundaries
+- provide a return point for avatars that fall out of the world
+- create an optional welcome sign with domain name and description
+- explain the difference between the spawn marker and the domain's actual landing point
 
-## 0.4.0 – Konfiguration, Export und Backups
+## 0.4.0 – Configuration, export, and backups
 
-- vollständige Konfiguration als JSON exportieren
-- JSON-Konfiguration validieren und importieren
-- benannte Snapshots vor Änderungen erstellen
-- mehrere Rückgängig-Schritte ermöglichen
-- Setups zwischen Domains übertragen
-- Unterschiede zwischen gespeichertem und aktuellem Zustand anzeigen
+- export the complete configuration as JSON
+- validate and import JSON configurations
+- create named snapshots before changes
+- support multiple undo steps
+- transfer setups between domains
+- show differences between saved and current state
 
-## 0.5.0 – Wasser, Terrain und Weltvorlagen
+## 0.5.0 – Water, terrain, and world presets
 
-- konfigurierbare Wasserfläche ergänzen
-- Terrain- und eigene GLTF-Modell-URLs unterstützen
-- sichtbares Gelände mit vereinfachter Kollisionsfläche kombinieren
-- Vorlagen für Insel, flache Landschaft, Ozean, Schneefeld und Weltraumplattform
-- zusätzliche frei lizenzierte Materialien und Umgebungsassets aufnehmen
+- add a configurable water surface
+- support terrain and custom GLTF model URLs
+- combine visible terrain with simplified collision geometry
+- add island, flat landscape, ocean, snowfield, and space-platform presets
+- include additional freely licensed materials and environment assets
 
-## 0.6.0 – Assistent und Live-Vorschau
+## 0.6.0 – Setup wizard and live preview
 
-- geführten Einrichtungsassistenten implementieren
-- Expertenmodus mit direktem Zugriff auf alle Einstellungen erhalten
-- Änderungen zunächst als lokale Vorschau darstellen
-- Vorschau übernehmen oder vollständig verwerfen
-- Vorher-/Nachher-Ansicht anbieten
+- implement a guided setup wizard
+- retain an expert mode with direct access to every setting
+- show changes as a local preview first
+- apply or discard the entire preview
+- provide a before-and-after view
 
-Der Assistent soll diese Schritte abbilden:
+The wizard should cover these steps:
 
-1. Weltart auswählen
-2. Größe und Mittelpunkt bestimmen
-3. Himmel und Tageszeit festlegen
-4. Boden, Terrain oder Wasser konfigurieren
-5. Startbereich einrichten
-6. Sicherheit und Begrenzungen prüfen
-7. Zusammenfassung kontrollieren
-8. Welt erstellen
+1. Choose a world type
+2. Set the size and center
+3. Select the sky and time of day
+4. Configure ground, terrain, or water
+5. Set up the landing area
+6. Check safety and boundaries
+7. Review the summary
+8. Create the world
 
-## 0.7.0 – Diagnose und Konflikterkennung
+## 0.7.0 – Diagnostics and conflict detection
 
-- prüfen, ob der Startpunkt über kollidierbarem Boden liegt
-- prüfen, ob der Startbereich innerhalb der Environment-Zone liegt
-- Asset-URLs auf Erreichbarkeit und unterstützte Formate prüfen
-- überlappende Environment-Zones erkennen
-- gesperrte oder nicht mehr bearbeitbare Setup-Entities melden
-- unzureichende Rechte für Aktualisierung oder Entfernung erkennen
-- unpassende Größenverhältnisse zwischen Boden und Zone melden
-- Komponentenübersicht mit Status und gezielten Aktionen anzeigen
+- verify that the landing point is above collidable ground
+- verify that the landing area is inside the environment zone
+- check asset URLs for availability and supported formats
+- detect overlapping environment zones
+- report locked or no-longer-editable setup entities
+- detect insufficient permissions for updating or removing the setup
+- report unsuitable size relationships between the ground and zone
+- show a component overview with statuses and targeted actions
 
-## Später – Tageszeit und Wetter
+## Later – Time of day and weather
 
-- feste Tageszeit oder laufenden Tag-Nacht-Zyklus anbieten
-- Zyklusgeschwindigkeit konfigurieren
-- Sonne, Skybox und Ambient Light synchron umschalten
-- klare, bewölkte, neblige und regnerische Umgebungen anbieten
-- optionale Ambient Sounds ergänzen
-- persistente Ausführung über ein geeignetes Server-Entity- oder
-  Assignment-Client-Skript untersuchen
+- provide a fixed time or a running day/night cycle
+- configure cycle speed
+- synchronize the sun, skybox, and ambient light
+- provide clear, cloudy, foggy, and rainy environments
+- add optional ambient sounds
+- investigate persistent execution through a suitable server entity or assignment-client script
 
-## Ziel für 1.0.0
+## Target for 1.0.0
 
-- alle Kernabläufe in Desktop und VR getestet
-- sichere Verwaltung ausschließlich eigener Entities
-- stabiler Einrichtungsassistent mit Expertenmodus
-- Startbereich, Environment, Boden, Wasser und grundlegendes Terrain
-- Import, Export, Snapshots und Wiederherstellung
-- automatische Abschlussprüfung ohne kritische Befunde
-- vollständige Benutzer- und Entwicklerdokumentation
-- für Overte Community Apps geprüft und einreichungsbereit
+- all core workflows tested in desktop and VR modes
+- safe management of owned entities only
+- stable setup wizard with expert mode
+- landing area, environment, ground, water, and basic terrain
+- import, export, snapshots, and recovery
+- automated final validation without critical findings
+- complete user and developer documentation
+- reviewed and ready for Overte Community Apps submission
 
-## Nächste Prioritäten
+## Next priorities
 
-Die nächsten drei funktionalen Schwerpunkte nach der Stabilisierung sind:
+The next three functional priorities after stabilization are:
 
-1. echter Startbereich mit Blickrichtung und Fallschutz
-2. Import, Export und wiederherstellbare Snapshots
-3. automatische Abschlussprüfung und Konflikterkennung
+1. a proper landing area with facing direction and fall protection
+2. import, export, and recoverable snapshots
+3. automated final validation and conflict detection

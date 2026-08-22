@@ -279,7 +279,7 @@
 
     function applyConfig(rawConfig) {
         if (!Entities.canRez()) {
-            throw new Error("Keine Berechtigung zum Erstellen von Domain-Entities.");
+            throw new Error("You do not have permission to create domain entities.");
         }
         discover();
         lastSnapshot = snapshot();
@@ -302,7 +302,7 @@
     }
 
     function undo() {
-        if (!lastSnapshot) { throw new Error("Es gibt noch keinen Zustand zum Wiederherstellen."); }
+        if (!lastSnapshot) { throw new Error("There is no previous state to restore yet."); }
         removeManaged();
         Object.keys(lastSnapshot).forEach(function (role) {
             var props = lastSnapshot[role];
