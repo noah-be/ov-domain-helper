@@ -52,7 +52,7 @@
         lightIntensity: 1.0,
         lightFalloffRadius: 20,
         ambientSoundPreset: "",
-        ambientSoundVolume: 0.2,
+        ambientSoundVolume: 0.35,
         spawnMarker: true
     };
 

@@ -9,7 +9,7 @@ Skyboxes are downscaled tonemapped JPG derivatives at 2048×1024. Materials use
 the original 1K JPG albedo, OpenGL normal, and roughness maps. The reduced sizes
 keep the Community Apps package practical while providing useful defaults.
 
-Ambient sounds are loudness-normalized 128 kbps MP3 derivatives of CC0 Freesound
+Ambient sounds are loudness-normalized to -12 LUFS 128 kbps MP3 derivatives of CC0 Freesound
 recordings. Long recordings are reduced to 30-second crossfade loops. Each
 individual sound page and creator is listed in the catalog.
 
