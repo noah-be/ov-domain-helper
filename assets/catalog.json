@@ -22,5 +22,14 @@
     {"id":"snow_01","title":"Snow","sourceTitle":"Snow 01","sourceUrl":"https://polyhaven.com/a/snow_01","authors":["Rob Tuytel"],"directory":"materials/snow_01"},
     {"id":"dark_wooden_planks","title":"Dark Wood","sourceTitle":"Dark Wooden Planks","sourceUrl":"https://polyhaven.com/a/dark_wooden_planks","authors":["Amal Kumar"],"directory":"materials/dark_wooden_planks"},
     {"id":"blue_metal_plate","title":"Metal","sourceTitle":"Blue Metal Plate","sourceUrl":"https://polyhaven.com/a/blue_metal_plate","authors":["Rob Tuytel"],"directory":"materials/blue_metal_plate"}
+  ],
+  "audio": [
+    {"id":"forest_birds","title":"Forest Birds","sourceTitle":"Forest birds - ambient seamless loop","sourceUrl":"https://freesound.org/people/Magnesus/sounds/723913/","authors":["Magnesus"],"license":"CC0-1.0","file":"audio/forest_birds.mp3"},
+    {"id":"ocean_waves","title":"Ocean Waves","sourceTitle":"Gentle Shoreline Waves - Generative Ambient (loopable)","sourceUrl":"https://freesound.org/people/kkenny101/sounds/852844/","authors":["kkenny101"],"license":"CC0-1.0","file":"audio/ocean_waves.mp3"},
+    {"id":"coastal_wind","title":"Coastal Wind","sourceTitle":"Looping Wind & Noise","sourceUrl":"https://freesound.org/people/kkenny101/sounds/852845/","authors":["kkenny101"],"license":"CC0-1.0","file":"audio/coastal_wind.mp3"},
+    {"id":"city_rain","title":"Rain","sourceTitle":"Raining In the City Ambience","sourceUrl":"https://freesound.org/people/RyanKingArt/sounds/607228/","authors":["RyanKingArt"],"license":"CC0-1.0","file":"audio/city_rain.mp3"},
+    {"id":"night_crickets","title":"Night Crickets","sourceTitle":"Night Crickets 02","sourceUrl":"https://freesound.org/people/Vrymaa/sounds/805466/","authors":["Vrymaa"],"license":"CC0-1.0","file":"audio/night_crickets.mp3"},
+    {"id":"fireplace","title":"Fireplace","sourceTitle":"Fireplace","sourceUrl":"https://freesound.org/people/myLoop/sounds/852107/","authors":["myLoop"],"license":"CC0-1.0","file":"audio/fireplace.mp3"},
+    {"id":"city_ambience","title":"City Ambience","sourceTitle":"CITY AMBIENCE for CLEAN LOOP.wav","sourceUrl":"https://freesound.org/people/ListenTonyBoy/sounds/325506/","authors":["ListenTonyBoy"],"license":"CC0-1.0","file":"audio/city_ambience.mp3"}
   ]
 }

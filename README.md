@@ -2,7 +2,7 @@
 
 A tablet app for [Overte](https://overte.org/) that sets up a fresh domain with the essential world entities.
 
-**Version:** 0.2.1
+**Version:** 0.2.2
 
 ## Current features
 
@@ -11,6 +11,7 @@ A tablet app for [Overte](https://overte.org/) that sets up a fresh domain with 
 - optional fill light and spawn marker
 - daylight, sunset, night, and studio presets
 - bundled CC0 library with nine skies and eight PBR ground materials
+- bundled CC0 ambient library with seven environmental sound loops and volume control
 - detection and editing of an existing managed setup
 - single-level undo and safe removal of owned entities only
 - permission check before making changes
@@ -26,7 +27,9 @@ The interface is loaded relative to the main script, so the repository files mus
 
 ## Usage
 
-Choose a preset or customize the **Environment**, **Ground**, and **Light** sections. **Apply world** creates or updates the managed entities. Changes persist in the domain and require permission to rez entities.
+Choose a preset or customize the **Environment**, **Ground**, **Light**, and **Audio** sections. **Apply world** creates or updates the managed entities. Changes persist in the domain and require permission to rez entities.
+
+The Audio section offers forest birds, ocean waves, coastal wind, city rain, night crickets, fireplace, and city ambience. The selected sound is created as a non-positional loop, so visitors hear it throughout the domain at the configured volume.
 
 Ground material sharpness is controlled with **Texture tile size (meters)**. The default value of `1` repeats a material every meter regardless of the total ground dimensions. Use a smaller value for finer detail or a larger value for broader patterns.
 
@@ -36,7 +39,7 @@ The app marks its entities in `userData` with `org.overte.ov-domain-helper`. It 
 
 The app needs permission to create and edit domain entities. It does not transmit user data and requires no external service. Network requests are only made when a user enters their own skybox, ambient-map, or material URLs.
 
-The bundled skies and ground materials come from Poly Haven and are available under CC0. Sources and authors are documented in [`assets/catalog.json`](assets/catalog.json).
+The bundled skies and ground materials come from Poly Haven, and the ambient sounds come from Freesound. All bundled assets are available under CC0. Sources and authors are documented in [`assets/catalog.json`](assets/catalog.json).
 
 ## Community Apps
 

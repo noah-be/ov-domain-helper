@@ -12,14 +12,14 @@
 
     var APP_NAME = "DOMAIN";
     var APP_ID = "org.overte.ov-domain-helper";
-    var VERSION = 2;
+    var VERSION = 3;
     var SEARCH_RADIUS = 16384;
     var UI_URL = Script.resolvePath("ui/index.html");
     var ICON_URL = Script.resolvePath("domain-helper.svg");
     var tablet = Tablet.getTablet("com.highfidelity.interface.tablet.system");
     var button = tablet.addButton({ text: APP_NAME, icon: ICON_URL, activeIcon: ICON_URL });
     var onScreen = false;
-    var entityIDs = { zone: null, ground: null, groundMaterial: null, light: null, spawn: null };
+    var entityIDs = { zone: null, ground: null, groundMaterial: null, light: null, spawn: null, ambientSound: null };
     var lastSnapshot = null;
 
     var DEFAULT_CONFIG = {
@@ -51,6 +51,8 @@
         lightColor: "#ffffff",
         lightIntensity: 1.0,
         lightFalloffRadius: 20,
+        ambientSoundPreset: "",
+        ambientSoundVolume: 0.2,
         spawnMarker: true
     };
 
@@ -62,6 +64,10 @@
     var MATERIAL_PRESETS = [
         "leafy_grass", "aerial_sand", "dirt_floor", "concrete_floor_01",
         "cobblestone_05", "snow_01", "dark_wooden_planks", "blue_metal_plate"
+    ];
+    var AUDIO_PRESETS = [
+        "forest_birds", "ocean_waves", "coastal_wind", "city_rain",
+        "night_crickets", "fireplace", "city_ambience"
     ];
 
     function clone(value) { return JSON.parse(JSON.stringify(value)); }
@@ -100,7 +106,7 @@
     }
 
     function discover() {
-        entityIDs = { zone: null, ground: null, groundMaterial: null, light: null, spawn: null };
+        entityIDs = { zone: null, ground: null, groundMaterial: null, light: null, spawn: null, ambientSound: null };
         Entities.findEntities(MyAvatar.position, SEARCH_RADIUS).forEach(function (id) {
             var props = Entities.getEntityProperties(id, ["userData"]);
             var data = parseMarker(props.userData);
@@ -131,8 +137,10 @@
         c.lightIntensity = clamp(c.lightIntensity, 0, 100);
         c.lightFalloffRadius = clamp(c.lightFalloffRadius, 0.1, 1000);
         c.groundTextureSize = clamp(c.groundTextureSize, 0.25, 100);
+        c.ambientSoundVolume = clamp(c.ambientSoundVolume, 0, 1);
         if (SKYBOX_PRESETS.indexOf(c.skyboxPreset) === -1) { c.skyboxPreset = ""; }
         if (MATERIAL_PRESETS.indexOf(c.groundMaterialPreset) === -1) { c.groundMaterialPreset = ""; }
+        if (AUDIO_PRESETS.indexOf(c.ambientSoundPreset) === -1) { c.ambientSoundPreset = ""; }
         return c;
     }
 
@@ -242,6 +250,21 @@
         };
     }
 
+    function ambientSoundProperties(c) {
+        return {
+            type: "Sound",
+            name: "OV Domain Helper · Ambient Sound",
+            position: c.center,
+            soundURL: assetURL("audio/" + c.ambientSoundPreset + ".mp3"),
+            playing: true,
+            loop: true,
+            positional: false,
+            localOnly: true,
+            volume: c.ambientSoundVolume,
+            userData: marker("ambientSound")
+        };
+    }
+
     function spawnProperties(c) {
         return {
             type: "Shape",
@@ -293,6 +316,7 @@
         upsert("groundMaterial", c.groundEnabled && Boolean(c.groundMaterialPreset || String(c.groundMaterialURL || "").trim()), groundMaterialProperties(c));
         upsert("light", c.lightEnabled, lightProperties(c));
         upsert("spawn", c.spawnMarker, spawnProperties(c));
+        upsert("ambientSound", Boolean(c.ambientSoundPreset), ambientSoundProperties(c));
         send({ type: "applied", config: c, entities: entityIDs });
     }
 
@@ -301,7 +325,7 @@
         Object.keys(entityIDs).forEach(function (role) {
             if (entityIDs[role]) { Entities.deleteEntity(entityIDs[role]); }
         });
-        entityIDs = { zone: null, ground: null, groundMaterial: null, light: null, spawn: null };
+        entityIDs = { zone: null, ground: null, groundMaterial: null, light: null, spawn: null, ambientSound: null };
         send({ type: "removed" });
     }
 

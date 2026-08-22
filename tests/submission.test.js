@@ -20,6 +20,7 @@ var catalog = JSON.parse(read("assets/catalog.json"));
 assert.strictEqual(catalog.license, "CC0-1.0");
 assert(catalog.skyboxes.length >= 8, "library should cover the basic sky conditions");
 assert(catalog.materials.length >= 8, "library should cover the basic ground types");
+assert(catalog.audio.length >= 7, "library should cover common ambient sound types");
 catalog.skyboxes.forEach(function (asset) {
     assert(fs.existsSync(path.join(root, "assets", asset.file)), "missing skybox: " + asset.id);
 });
@@ -27,6 +28,10 @@ catalog.materials.forEach(function (asset) {
     ["albedo.jpg", "normal.jpg", "roughness.jpg"].forEach(function (map) {
         assert(fs.existsSync(path.join(root, "assets", asset.directory, map)), "missing material map: " + asset.id + "/" + map);
     });
+});
+catalog.audio.forEach(function (asset) {
+    assert(fs.existsSync(path.join(root, "assets", asset.file)), "missing ambient sound: " + asset.id);
+    assert.strictEqual(asset.license, "CC0-1.0", "ambient sound must be CC0: " + asset.id);
 });
 
 var icon = read("domain-helper.svg");

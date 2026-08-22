@@ -101,6 +101,19 @@ assert.strictEqual(store[materialID].materialMappingScale.x, 50, "50m ground sho
 assert.strictEqual(store[materialID].materialMappingScale.y, 50, "50m ground should repeat every 1m");
 assert(JSON.parse(store[materialID].materialData).materials.albedoMap.indexOf("leafy_grass/albedo.jpg") !== -1);
 
+config.ambientSoundPreset = "forest_birds";
+config.ambientSoundVolume = 0.25;
+webHandler(JSON.stringify({ type: "apply", config: config }));
+assert.strictEqual(Object.keys(store).length, 6, "ambient preset should add one managed Sound entity");
+var soundID = Object.keys(store).filter(function (id) { return store[id].type === "Sound"; })[0];
+assert(soundID, "ambient Sound entity should exist");
+assert(store[soundID].soundURL.indexOf("audio/forest_birds.mp3") !== -1);
+assert.strictEqual(store[soundID].playing, true);
+assert.strictEqual(store[soundID].loop, true);
+assert.strictEqual(store[soundID].positional, false);
+assert.strictEqual(store[soundID].localOnly, true);
+assert.strictEqual(store[soundID].volume, 0.25);
+
 store.foreign = { type: "Box", name: "User content", userData: "{}" };
 webHandler(JSON.stringify({ type: "remove" }));
 assert.deepStrictEqual(Object.keys(store), ["foreign"], "remove must preserve unmarked entities");

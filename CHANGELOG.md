@@ -2,6 +2,13 @@
 
 All notable changes to OV Domain Helper are documented here.
 
+## 0.2.2 - 2026-08-22
+
+- Added seven bundled CC0 environmental sound loops from Freesound.
+- Added an Audio section with ambience selection and volume control.
+- Added a managed, non-positional looping Sound entity.
+- Connected daylight, sunset, and night presets to matching ambience.
+
 ## 0.2.1 - 2026-08-22
 
 - Fixed blurry ground materials by deriving UV repeat counts from ground dimensions.

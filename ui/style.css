@@ -33,6 +33,8 @@ input[type=range] { width:100%; accent-color:var(--accent); }
 .asset span { position:absolute; z-index:1; left:7px; right:5px; bottom:6px; font-size:11px; font-weight:bold; }
 .asset.selected { border-color:var(--accent); box-shadow:0 0 0 1px #000 inset; }
 .asset.none { background:#27333d; text-shadow:none; }
+.asset.audio { min-height:58px; background:#27333d; text-shadow:none; }
+.asset.audio:not(.none)::before { background:linear-gradient(135deg,#235264,#252d38); }
 button { cursor:pointer; border-radius:7px; padding:10px 12px; border:1px solid transparent; color:white; }
 .icon-button { background:var(--card); border-color:var(--line); font-size:20px; }.primary { background:#168fa3; }.secondary { background:#293640; }.danger { background:#9f3e45; }
 footer { position:fixed; bottom:0; left:0; right:0; z-index:3; display:grid; grid-template-columns:auto auto 1fr; gap:8px; padding:11px; background:#111820ee; border-top:1px solid var(--line); }

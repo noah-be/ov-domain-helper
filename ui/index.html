@@ -23,6 +23,7 @@
     <button data-tab="environment">Environment</button>
     <button data-tab="ground">Ground</button>
     <button data-tab="light">Light</button>
+    <button data-tab="audio">Audio</button>
   </nav>
   <main>
     <section data-panel="presets" class="active">
@@ -96,6 +97,13 @@
         <label>Intensity<input id="lightIntensity" type="number" min="0" max="100" step="0.1"></label>
       </div>
       <label>Range<input id="lightFalloffRadius" type="number" min="0.1" max="1000"></label>
+    </section>
+    <section data-panel="audio">
+      <h2>Ambient sound</h2>
+      <p class="muted">Bundled CC0 environmental loops from Freesound</p>
+      <div id="audioLibrary" class="asset-grid audio-grid"></div>
+      <label>Volume <output id="ambientSoundVolumeOut"></output><input id="ambientSoundVolume" type="range" min="0" max="1" step="0.01"></label>
+      <p class="muted">The selected ambience plays as a non-positional, domain-wide loop for each visitor.</p>
     </section>
   </main>
   <footer>
