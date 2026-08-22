@@ -28,7 +28,7 @@ The interface is loaded relative to the main script, so the repository files mus
 
 Choose a preset or customize the **Environment**, **Ground**, and **Light** sections. **Apply world** creates or updates the managed entities. Changes persist in the domain and require permission to rez entities.
 
-Ground material sharpness is controlled with **Texture tile size (meters)**. The default value of `4` repeats a material every four meters regardless of the total ground dimensions. Use a smaller value for finer detail or a larger value for broader patterns.
+Ground material sharpness is controlled with **Texture tile size (meters)**. The default value of `1` repeats a material every meter regardless of the total ground dimensions. Use a smaller value for finer detail or a larger value for broader patterns.
 
 The app marks its entities in `userData` with `org.overte.ov-domain-helper`. It never edits or removes unrelated entities.
 

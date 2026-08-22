@@ -45,7 +45,7 @@
         groundColor: "#6f8d58",
         groundMaterialURL: "",
         groundMaterialPreset: "",
-        groundTextureSize: 4,
+        groundTextureSize: 1,
         groundCollisionless: false,
         lightEnabled: false,
         lightColor: "#ffffff",

@@ -97,8 +97,8 @@ assert(materialID, "material entity should exist");
 assert(store[materialID].parentID, "material entity should be parented to the ground");
 assert.strictEqual(store[materialID].materialURL, "materialData");
 assert.strictEqual(store[materialID].materialRepeat, true);
-assert.strictEqual(store[materialID].materialMappingScale.x, 12.5, "50m ground should repeat every 4m");
-assert.strictEqual(store[materialID].materialMappingScale.y, 12.5, "50m ground should repeat every 4m");
+assert.strictEqual(store[materialID].materialMappingScale.x, 50, "50m ground should repeat every 1m");
+assert.strictEqual(store[materialID].materialMappingScale.y, 50, "50m ground should repeat every 1m");
 assert(JSON.parse(store[materialID].materialData).materials.albedoMap.indexOf("leafy_grass/albedo.jpg") !== -1);
 
 store.foreign = { type: "Box", name: "User content", userData: "{}" };

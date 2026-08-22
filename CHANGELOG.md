@@ -6,7 +6,7 @@ All notable changes to OV Domain Helper are documented here.
 
 - Fixed blurry ground materials by deriving UV repeat counts from ground dimensions.
 - Replaced the ambiguous tiling scale with a physical texture tile size in meters.
-- Enabled material repetition explicitly and defaulted ground textures to a 4 m tile size.
+- Enabled material repetition explicitly and defaulted ground textures to a 1 m tile size.
 
 ## 0.2.0 - 2026-08-21
 
